@@ -1,0 +1,188 @@
+.d-grid{
+    display: grid;
+}
+
+.grid-width{
+    grid-template-columns: 300px;
+}
+.grid-width div{
+   width: 100px;
+}
+
+.grid-min-size{
+    grid-template-columns: 300px;
+    grid-template-rows: 150px;
+}
+
+.grid-min-size div{
+    min-width: 100px;
+    min-height: 100px;
+}
+
+.grid-max-size{
+    grid-template-columns: 200px;
+    grid-template-rows: 150px;
+}
+
+.grid-max-size div{
+    min-width: 100px;
+    max-height: 100px;
+    box-sizing: border-box;
+}
+
+.grid-padding-size{
+    grid-template-columns: 400px;
+    grid-template-rows: 150px;
+}
+
+.grid-padding-size div{
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 300px;
+    padding-bottom: 400px;
+}
+
+.grid-margin-size{
+    grid-template-columns: 100px 1fr;
+    grid-template-rows: 70px 1fr;
+}
+
+.grid-margin-size div:nth-child(1){
+    margin: 40px;
+}
+
+.grid-margin-size div:nth-child(6){
+    margin: 40px;
+}
+
+.grid-auto-margin{
+    grid-template-columns: 1fr;
+}
+
+.grid-auto-margin div{
+    margin: 0 auto;
+}
+
+.responsive-grid{
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 80px auto auto 80px;
+    /* 
+    grid-template-rows: 100px 1fr 100px;
+    grid-template-areas: 
+    "logo header header header header-option header-option"
+    "nav content content content content content"
+    "footer footer footer footer footer footer";
+    */
+
+    grid-template-areas: 
+        "logo header-option header-option header header header"
+        "nav nav nav nav nav nav"
+        "content content content content content content"
+        "footer footer footer footer footer footer";
+}
+
+.responsive-grid div:nth-child(1){
+    grid-area: logo;
+}
+
+.responsive-grid div:nth-child(2){
+    grid-area: header;
+}
+
+.responsive-grid div:nth-child(3){
+    grid-area: header-option;
+}
+
+.responsive-grid div:nth-child(4){
+    grid-area: nav;
+}
+
+.responsive-grid div:nth-child(5){
+    grid-area: content;
+}
+
+.responsive-grid div:nth-child(6){
+    grid-area: footer;
+}
+
+/*@media(max-width: 768px){
+    .responsive-grid{
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: 80px auto  auto 80px;
+        grid-template-areas: 
+        "logo header-option header-option header header header"
+        "nav nav nav nav nav nav"
+        "content content content content content content"
+        "footer footer footer footer footer footer";
+    }
+}*/
+
+@media(min-width: 420px){
+    .responsive-grid{
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: 100px 1fr 100px;
+   /*     grid-template-areas: 
+        "logo header-option header-option header header header"
+        "nav nav nav nav nav nav"
+        "content content content content content content"
+        "footer footer footer footer footer footer";
+*/
+        grid-template-areas: 
+        "logo header header header header-option header-option"
+        "nav content content content content content"
+        "footer footer footer footer footer footer";
+    }
+}
+
+    @media(min-width: 720px){
+        .responsive-grid{
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: 150px 1fr 150px;
+            grid-template-areas: 
+            "logo header header header header-option header-option"
+            "nav content content content content content"
+            "footer footer footer footer footer footer";
+        }
+}
+
+.grid-animation{
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: "A B" "C D";
+    animation: gridAnimation 5s infinite;
+}
+
+.grid-animation div:nth-child(1){
+    grid-area: A;
+}
+
+.grid-animation div:nth-child(2){
+    grid-area: B;
+}
+
+.grid-animation div:nth-child(3){
+    grid-area: C;
+}
+
+.grid-animation div:nth-child(4){
+    grid-area: D;
+}
+
+@keyframes gridAnimation{
+    0%{
+        grid-template-areas: "A B" "C D";
+    }
+
+    25%{
+        grid-template-areas: "A C" "B D";
+    }
+    
+    50%{
+        grid-template-areas: "A D" "C B";
+    }
+
+    100%{
+        grid-template-areas: "B A" "D C";
+    }
+}
+
